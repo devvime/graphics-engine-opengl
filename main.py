@@ -13,14 +13,13 @@ class GraphicsEngine:
         pg.display.gl_set_attribute(pg.GL_CONTEXT_MINOR_VERSION, 3)
         pg.display.gl_set_attribute(pg.GL_CONTEXT_PROFILE_MASK, pg.GL_CONTEXT_PROFILE_CORE)
         pg.display.set_mode(self.WIN_SIZE, flags=pg.OPENGL | pg.DOUBLEBUF)
+        pg.event.set_grab(True)
+        pg.mouse.set_visible(False)
         self.clock = pg.time.Clock()
         self.time = 0
-        try:
-            self.ctx = mgl.create_context()
-        except Exception as e:
-            print(f"Error creating OpenGL context: {e}")
-            pg.quit()
-            sys.exit()
+        self.delta_time = 0
+        self.ctx = mgl.create_context()
+        self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
             
         self.camera = Camera(self)
         self.scene = Cube(self)
@@ -44,8 +43,9 @@ class GraphicsEngine:
         while True:
             self.get_time()
             self.check_events()
+            self.camera.update()
             self.render()
-            self.clock.tick(60)
+            self.delta_time = self.clock.tick(60)
             
 if __name__ == '__main__':
     app = GraphicsEngine()
