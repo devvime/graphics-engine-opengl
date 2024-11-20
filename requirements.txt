@@ -3,3 +3,4 @@ moderngl
 numpy
 wheel
 PyGLM
+pywavefront

@@ -9,5 +9,4 @@ sudo apt install build-essential
 sudo apt install python3-dev
 ```
 
-texturing
-https://www.youtube.com/watch?v=eJDIsFJN4OQ&list=PLi77irUVkDav8GLrZSVZiPPHvVa-RjJ-o
+<!-- https://www.youtube.com/watch?v=eJDIsFJN4OQ&list=PLi77irUVkDav8GLrZSVZiPPHvVa-RjJ-o -->
