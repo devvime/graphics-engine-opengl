@@ -1,5 +1,5 @@
-from vbo import VBO
-from shader_program import ShaderProgram
+from core.vbo import VBO
+from core.shader_program import ShaderProgram
 
 class VAO:
     def __init__(self, ctx):

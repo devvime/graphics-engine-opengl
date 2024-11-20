@@ -8,5 +8,3 @@ sudo apt install mesa-utils
 sudo apt install build-essential
 sudo apt install python3-dev
 ```
-
-<!-- https://www.youtube.com/watch?v=eJDIsFJN4OQ&list=PLi77irUVkDav8GLrZSVZiPPHvVa-RjJ-o -->

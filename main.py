@@ -1,12 +1,12 @@
 import pygame as pg
 import moderngl as mgl
 import sys
-from model import *
-from camera import Camera
-from light import Light
-from mesh import Mesh
-from scene import Scene
-from scene_renderer import SceneRenderer
+from core.model import *
+from core.camera import Camera
+from core.light import Light
+from core.mesh import Mesh
+from core.scene_renderer import SceneRenderer
+from scenes.scene import Scene
 
 class GraphicsEngine:
     def __init__(self, win_size=(800, 600)):

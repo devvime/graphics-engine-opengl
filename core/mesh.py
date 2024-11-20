@@ -1,5 +1,5 @@
-from vao import VAO
-from texture import Texture
+from core.vao import VAO
+from core.texture import Texture
 
 class Mesh:
     def __init__(self, app):
