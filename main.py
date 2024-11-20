@@ -4,6 +4,7 @@ import sys
 
 from model import *
 from camera import Camera
+from light import Light
 
 class GraphicsEngine:
     def __init__(self, win_size=(800, 600)):
@@ -20,7 +21,8 @@ class GraphicsEngine:
         self.delta_time = 0
         self.ctx = mgl.create_context()
         self.ctx.enable(flags=mgl.DEPTH_TEST | mgl.CULL_FACE)
-            
+        
+        self.light = Light()
         self.camera = Camera(self)
         self.scene = Cube(self)
         
