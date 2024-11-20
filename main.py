@@ -7,6 +7,7 @@ from core.light import Light
 from core.mesh import Mesh
 from core.scene_renderer import SceneRenderer
 from scenes.scene import Scene
+from scenes.gameplay import GamePlay
 
 class GraphicsEngine:
     def __init__(self, win_size=(800, 600)):
@@ -26,7 +27,7 @@ class GraphicsEngine:
         self.light = Light()
         self.camera = Camera(self)
         self.mesh = Mesh(self)
-        self.scene = Scene(self)
+        self.scene = GamePlay(self)
         self.scene_renderer = SceneRenderer(self)
 
     def check_events(self):
