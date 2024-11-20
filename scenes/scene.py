@@ -6,7 +6,6 @@ class Scene:
         self.app = app
         self.objects = []
         self.load()
-        # skybox
         self.skybox = AdvancedSkyBox(app)
 
     def add_object(self, obj):

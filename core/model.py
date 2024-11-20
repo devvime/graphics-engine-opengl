@@ -19,13 +19,10 @@ class BaseModel:
 
     def get_model_matrix(self):
         m_model = glm.mat4()
-        # translate
         m_model = glm.translate(m_model, self.pos)
-        # rotate
         m_model = glm.rotate(m_model, self.rot.z, glm.vec3(0, 0, 1))
         m_model = glm.rotate(m_model, self.rot.y, glm.vec3(0, 1, 0))
         m_model = glm.rotate(m_model, self.rot.x, glm.vec3(1, 0, 0))
-        # scale
         m_model = glm.scale(m_model, self.scale)
         return m_model
 
@@ -53,27 +50,21 @@ class ExtendedBaseModel(BaseModel):
 
     def on_init(self):
         self.program['m_view_light'].write(self.app.light.m_view_light)
-        # resolution
         self.program['u_resolution'].write(glm.vec2(self.app.WIN_SIZE))
-        # depth texture
         self.depth_texture = self.app.mesh.texture.textures['depth_texture']
         self.program['shadowMap'] = 1
         self.depth_texture.use(location=1)
-        # shadow
         self.shadow_vao = self.app.mesh.vao.vaos['shadow_' + self.vao_name]
         self.shadow_program = self.shadow_vao.program
         self.shadow_program['m_proj'].write(self.camera.m_proj)
         self.shadow_program['m_view_light'].write(self.app.light.m_view_light)
         self.shadow_program['m_model'].write(self.m_model)
-        # texture
         self.texture = self.app.mesh.texture.textures[self.tex_id]
         self.program['u_texture_0'] = 0
         self.texture.use(location=0)
-        # mvp
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(self.camera.m_view)
         self.program['m_model'].write(self.m_model)
-        # light
         self.program['light.position'].write(self.app.light.position)
         self.program['light.Ia'].write(self.app.light.Ia)
         self.program['light.Id'].write(self.app.light.Id)
@@ -106,11 +97,9 @@ class SkyBox(BaseModel):
         self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
 
     def on_init(self):
-        # texture
         self.texture = self.app.mesh.texture.textures[self.tex_id]
         self.program['u_texture_skybox'] = 0
         self.texture.use(location=0)
-        # mvp
         self.program['m_proj'].write(self.camera.m_proj)
         self.program['m_view'].write(glm.mat4(glm.mat3(self.camera.m_view)))
 
@@ -125,7 +114,6 @@ class AdvancedSkyBox(BaseModel):
         self.program['m_invProjView'].write(glm.inverse(self.camera.m_proj * m_view))
 
     def on_init(self):
-        # texture
         self.texture = self.app.mesh.texture.textures[self.tex_id]
         self.program['u_texture_skybox'] = 0
         self.texture.use(location=0)

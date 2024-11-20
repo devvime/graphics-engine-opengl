@@ -119,7 +119,6 @@ class AdvancedSkyBoxVBO(BaseVBO):
         self.attribs = ['in_position']
 
     def get_vertex_data(self):
-        # in clip space
         z = 0.9999
         vertices = [(-1, -1, z), (3, -1, z), (-1, 3, z)]
         vertex_data = np.array(vertices, dtype='f4')

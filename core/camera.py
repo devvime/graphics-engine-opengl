@@ -4,7 +4,7 @@ import pygame as pg
 FOV = 50  # deg
 NEAR = 0.1
 FAR = 100
-SPEED = 0.005
+SPEED = 0.010
 SENSITIVITY = 0.04
 
 class Camera:
@@ -17,9 +17,7 @@ class Camera:
         self.forward = glm.vec3(0, 0, -1)
         self.yaw = yaw
         self.pitch = pitch
-        # view matrix
         self.m_view = self.get_view_matrix()
-        # projection matrix
         self.m_proj = self.get_projection_matrix()
 
     def rotate(self):
